@@ -17,7 +17,7 @@ public interface TournamentRepository extends JpaRepository<Tournament, Long> {
 
     List<Tournament> findTournamentByLocation(String location);
 
-    List<Tournament> findTournamentByCashPrizeAmount(double cashPrizeAmount);
+    public Optional<Tournament> findById(long id);
 
     List<Tournament> findTournamentByParticipatingMembers(List<Member> participatingMembers);
 

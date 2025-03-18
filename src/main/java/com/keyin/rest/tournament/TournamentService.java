@@ -25,14 +25,14 @@ public class TournamentService {
         return tournaments;
     }
 
-    public Tournament getTournamentByStartDate(LocalDate startDate) {
-        return tournamentRepository.findTournamentByStartDate(startDate)
-                .orElseThrow(() -> new TournamentNotFoundException("Tournament starting from " + startDate + " not found"));
+    public Tournament getTournamentByStartDate(LocalDate tournamentStartDate) {
+        return tournamentRepository.findTournamentByStartDate(tournamentStartDate)
+                .orElseThrow(() -> new TournamentNotFoundException("Tournament starting from " + tournamentStartDate + " not found"));
     }
 
-    public Tournament getTournamentByEndDate(LocalDate endDate) {
-        return tournamentRepository.findTournamentByEndDate(endDate)
-                .orElseThrow(() -> new TournamentNotFoundException("Tournament ending on " + endDate + " not found"));
+    public Tournament getTournamentByEndDate(LocalDate tournamentEndDate) {
+        return tournamentRepository.findTournamentByEndDate(tournamentEndDate)
+                .orElseThrow(() -> new TournamentNotFoundException("Tournament ending on " + tournamentEndDate + " not found"));
     }
 
     public List<Tournament> getTournamentByLocation(String location) {
@@ -43,15 +43,12 @@ public class TournamentService {
         return tournaments;
     }
 
-    public List<Tournament> getTournamentByCashPrizeAmount(double cashPrizeAmount) {
-        List<Tournament> tournaments = tournamentRepository.findTournamentByCashPrizeAmount(cashPrizeAmount);
-        if (tournaments.isEmpty()) {
-            throw new TournamentNotFoundException("No tournaments found with cash prize amount: " + cashPrizeAmount);
-        }
-        return tournaments;
+    public Tournament getTournamentById(long id) {
+        return tournamentRepository.findById(id)
+                .orElseThrow(() -> new TournamentNotFoundException("Tournament with ID " + id + " not found"));
     }
 
-    public List<Tournament> getTournamentsByParticipatingMembers(List<Member> participatingMembers) {
+    public List<Tournament> getTournamentByParticipatingMembers(List<Member> participatingMembers) {
         List<Tournament> tournaments = tournamentRepository.findTournamentByParticipatingMembers(participatingMembers);
         if (tournaments.isEmpty()) {
             throw new TournamentNotFoundException("No tournaments found with participating members: " + participatingMembers);
