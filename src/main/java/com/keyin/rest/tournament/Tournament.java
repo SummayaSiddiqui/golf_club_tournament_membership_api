@@ -7,7 +7,10 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "tournaments")
+@Table(name = "tournaments", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"tournament_start_date", "tournament_end_date"})
+})
+
 public class Tournament {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
