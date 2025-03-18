@@ -73,12 +73,12 @@ public class Tournament {
         return entryFee;
     }
 
-    public List<Member> getParticipatingMembers() {
-        return participatingMembers;
-    }
-
     public double getCashPrizeAmount() {
         return cashPrizeAmount;
+    }
+
+    public List<Member> getParticipatingMembers() {
+        return participatingMembers;
     }
 
     public void setId(long id) {
