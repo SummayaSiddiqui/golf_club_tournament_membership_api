@@ -2,11 +2,14 @@ package com.keyin.rest.tournament;
 
 import com.keyin.rest.exception.TournamentNotFoundException; // Changed to a more specific exception
 import com.keyin.rest.member.Member;
+import com.keyin.rest.member.MemberRepository;
+import com.keyin.rest.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TournamentService {
@@ -16,6 +19,9 @@ public class TournamentService {
     public TournamentService(TournamentRepository tournamentRepository) {
         this.tournamentRepository = tournamentRepository;
     }
+
+    @Autowired
+    private MemberRepository memberRepository;
 
     public List<Tournament> getAllTournaments() {
         List<Tournament> tournaments = tournamentRepository.findAll();
@@ -54,5 +60,17 @@ public class TournamentService {
             throw new TournamentNotFoundException("No tournaments found with participating members: " + participatingMembers);
         }
         return tournaments;
+    }
+
+    public Tournament createTournament(Tournament tournament) {
+        List<Member> members = memberRepository.findAllById(
+                tournament.getParticipatingMembers().stream()
+                        .map(Member::getId)
+                        .collect(Collectors.toList())
+        );
+
+        tournament.setParticipatingMembers(members);
+
+        return tournamentRepository.save(tournament);
     }
 }

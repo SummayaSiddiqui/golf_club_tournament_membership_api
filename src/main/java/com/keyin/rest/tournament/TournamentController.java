@@ -1,13 +1,8 @@
 package com.keyin.rest.tournament;
 
-import com.keyin.rest.exception.TournamentNotFoundException;
 import com.keyin.rest.member.Member;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -47,5 +42,10 @@ public class TournamentController {
     public List<Member> getMembersInTournament(@PathVariable long id) {
         Tournament tournament = tournamentService.getTournamentById(id);
         return tournament.getParticipatingMembers();
+    }
+
+    @PostMapping("")
+    public Tournament createTournament(@RequestBody Tournament tournament) {
+        return tournamentService.createTournament(tournament);
     }
 }

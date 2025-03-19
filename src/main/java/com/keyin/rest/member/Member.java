@@ -41,7 +41,7 @@ public class Member {
     public Member(String memberName, String memberAddress, String memberEmailAddress, String memberPhoneNumber, LocalDate memberStartDate, String duration) {
         this.memberName = memberName;
         this.memberAddress = memberAddress;
-        this. memberEmailAddress = memberEmailAddress;
+        this.memberEmailAddress = memberEmailAddress;
         this.memberPhoneNumber = memberPhoneNumber;
         this.memberStartDate = memberStartDate;
         this.duration = duration;

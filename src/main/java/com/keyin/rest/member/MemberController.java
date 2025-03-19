@@ -28,8 +28,8 @@ public class MemberController {
     }
 
     @GetMapping("/getMemberByAddress/{address}")
-    public Member getMemberByAddress(@PathVariable String address) {
-        return (Member) memberService.getMemberByAddress(address);
+    public List<Member>getMemberByAddress(@PathVariable String address) {
+        return memberService.getMemberByAddress(address);
     }
 
     @GetMapping("/getMemberByPhoneNumber/{phoneNumber}")

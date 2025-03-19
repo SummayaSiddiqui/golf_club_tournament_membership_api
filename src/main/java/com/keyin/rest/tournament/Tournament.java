@@ -31,7 +31,7 @@ public class Tournament {
     @Column(name = "cash_prize_amount", nullable = false)
     private double cashPrizeAmount;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinTable(
             name = "tournament_members",
             joinColumns = @JoinColumn(name = "tournament_id"),
