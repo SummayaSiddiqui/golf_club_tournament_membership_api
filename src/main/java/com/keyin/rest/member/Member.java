@@ -24,8 +24,8 @@ public class Member {
     @Column(name = "member_phone", unique = true, nullable = false)
     private String memberPhoneNumber;
 
-    @Column(name = "start_date", nullable = false)
-    private LocalDate startDate;
+    @Column(name = "member_start_date", nullable = false)
+    private LocalDate memberStartDate;
 
     @Column(name = "duration", nullable = false)
     private String duration;
@@ -38,12 +38,12 @@ public class Member {
         this.id = id;
     }
 
-    public Member(String memberName, String memberAddress, String memberEmailAddress, String memberPhoneNumber, LocalDate startDate, String duration) {
+    public Member(String memberName, String memberAddress, String memberEmailAddress, String memberPhoneNumber, LocalDate memberStartDate, String duration) {
         this.memberName = memberName;
         this.memberAddress = memberAddress;
         this. memberEmailAddress = memberEmailAddress;
         this.memberPhoneNumber = memberPhoneNumber;
-        this.startDate = startDate;
+        this.memberStartDate = memberStartDate;
         this.duration = duration;
     }
 
@@ -67,8 +67,8 @@ public class Member {
         return memberPhoneNumber;
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
+    public LocalDate getMemberStartDate() {
+        return memberStartDate;
     }
 
     public String getDuration() {
@@ -95,8 +95,8 @@ public class Member {
         this.memberPhoneNumber = memberPhoneNumber;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+    public void setMemberStartDate(LocalDate memberStartDate) {
+        this.memberStartDate = memberStartDate;
     }
 
     public void setDuration(String duration) {
@@ -111,7 +111,7 @@ public class Member {
                 ", memberAddress='" + memberAddress + '\'' +
                 ", memberEmailAddress='" + memberEmailAddress + '\'' +
                 ", memberPhoneNumber='" + memberPhoneNumber + '\'' +
-                ", startDate='" + startDate + '\'' +
+                ", startDate='" + memberStartDate + '\'' +
                 ", duration='" + duration + '\'' +
                 '}';
     }

@@ -16,11 +16,11 @@ public class Tournament {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "tournament_start_date", nullable = false)
-    private LocalDate tournamentStartDate;
+    @Column(name = "start_date", nullable = false)
+    private LocalDate startDate;
 
-    @Column(name = "tournament_end_date", nullable = false)
-    private LocalDate tournamentEndDate;
+    @Column(name = "end_date", nullable = false)
+    private LocalDate endDate;
 
     @Column(name = "location", nullable = false)
     private String location;
@@ -47,9 +47,9 @@ public class Tournament {
         this.id = id;
     }
 
-    public Tournament(LocalDate tournamentStartDate, LocalDate tournamentEndDate, String location, double entryFee, double cashPrizeAmount, List<Member> participatingMembers) {
-        this.tournamentStartDate = tournamentStartDate;
-        this.tournamentEndDate = tournamentEndDate;
+    public Tournament(LocalDate startDate, LocalDate endDate, String location, double entryFee, double cashPrizeAmount, List<Member> participatingMembers) {
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.location = location;
         this.entryFee = entryFee;
         this.cashPrizeAmount = cashPrizeAmount;
@@ -60,12 +60,12 @@ public class Tournament {
         return id;
     }
 
-    public LocalDate getTournamentStartDate() {
-        return tournamentStartDate;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public LocalDate getTournamentEndDate() {
-        return tournamentEndDate;
+    public LocalDate getEndDate() {
+        return endDate;
     }
 
     public String getLocation() {
@@ -88,12 +88,12 @@ public class Tournament {
         this.id = id;
     }
 
-    public void setTournamentStartDate(LocalDate tournamentStartDate) {
-        this.tournamentStartDate = tournamentStartDate;
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
-    public void setTournamentEndDate(LocalDate tournamentEndDate) {
-        this.tournamentEndDate = tournamentEndDate;
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 
     public void setLocation(String location) {
@@ -116,8 +116,8 @@ public class Tournament {
     public String toString() {
         return "Tournament{" +
                 "id=" + id +
-                ", tournamentStartDate=" + tournamentStartDate +
-                ", tournamentEndDate=" + tournamentEndDate +
+                ", tournamentStartDate=" + startDate +
+                ", tournamentEndDate=" + endDate +
                 ", location='" + location + '\'' +
                 ", entryFee=" + entryFee +
                 ", cashPrizeAmount=" + cashPrizeAmount +

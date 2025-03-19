@@ -26,12 +26,12 @@ public class MemberService {
     }
 
     public Member getMemberByName(String memberName) {
-        return memberRepository.findMemberByName(memberName)
+        return memberRepository.findByMemberName(memberName)
                 .orElseThrow(() -> new MemberNotFoundException("Member with name " + memberName + " not found"));
     }
 
     public List<Member> getMemberByAddress(String memberAddress) {
-        List<Member> members = memberRepository.findMemberByAddress(memberAddress);
+        List<Member> members = memberRepository.findByMemberAddress(memberAddress);
         if (members.isEmpty()) {
             throw new MemberNotFoundException("No members found with start date: " + memberAddress);
         }
@@ -39,17 +39,17 @@ public class MemberService {
     }
 
     public Member getMemberByPhoneNumber(String phoneNumber) {
-        return memberRepository.findMemberByPhoneNumber(phoneNumber)
+        return memberRepository.findByMemberPhoneNumber(phoneNumber)
                 .orElseThrow(() -> new MemberNotFoundException("Member with phone number " + phoneNumber + " not found"));
     }
 
     public Member getMemberByEmailAddress(String emailAddress) {
-        return memberRepository.findMemberByEmailAddress(emailAddress)
+        return memberRepository.findByMemberEmailAddress(emailAddress)
                 .orElseThrow(() -> new MemberNotFoundException("Member with email address " + emailAddress + " not found"));
     }
 
     public List<Member> getMemberByStartDate(LocalDate startDate) {
-        List<Member> members = memberRepository.findMemberByStartDate(startDate);
+        List<Member> members = memberRepository.findByMemberStartDate(startDate);
         if (members.isEmpty()) {
             throw new MemberNotFoundException("No members found with start date: " + startDate);
         }
