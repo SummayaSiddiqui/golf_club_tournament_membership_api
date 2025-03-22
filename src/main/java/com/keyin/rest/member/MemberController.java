@@ -1,6 +1,7 @@
 package com.keyin.rest.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -42,9 +43,10 @@ public class MemberController {
         return memberService.getMemberByEmailAddress(emailAddress);
     }
 
-    @GetMapping("/getMemberByStartDate/{startDate}")
-    public Member getMemberByStartDate(@PathVariable LocalDate startDate) {
-        return (Member) memberService.getMemberByStartDate(startDate);
+    @GetMapping("/getMemberByStartDate")
+    public List<Member> getMemberByStartDate(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate) {
+        return memberService.getMemberByStartDate(startDate);
     }
 
     @PostMapping("")
