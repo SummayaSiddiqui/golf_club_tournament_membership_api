@@ -50,7 +50,7 @@ Ensure you have the following installed on your system:
     
     **Note**: The application is configured to use a database named `golf_club`. This is specified in the JDBC URL:
       ```
-        spring.datasource.url=jdbc:mysql:// mysql-db:3306/golf_club
+        spring.datasource.url=jdbc:mysql://mysql-db:3306/golf_club
       ```
     Ensure that this database name matches your requirements or update it if needed.
 
@@ -69,11 +69,10 @@ Ensure you have the following installed on your system:
      - A MySQL container will be created using the `mysql:8.0` image.
      - The database data will be persisted in a Docker volume named `mysql_data`.
      - An initialization SQL script (`init.sql`) will be executed during startup.
-     - The MySQL service is named `mysql-db` within the Docker network. This is the hostname that the Spring Boot application uses to connect to the database.
-
-  - **Application Service**:
-    - The Spring Boot application will start and connect to the MySQL database.
-    - It will be accessible at `http://localhost:8080`.
+     - The MySQL service is named `mysql-db` within the Docker network. This is the hostname that the Spring Boot application uses to          connect to the database.
+   - **Application Service**:
+     - The Spring Boot application will start and connect to the MySQL database.
+     - It will be accessible at `http://localhost:8080`.
 
 7. Verify Services
    - **MySQL**: Ensure that MySQL is running by connecting to it using a client or checking logs.
@@ -96,11 +95,11 @@ Ensure you have the following installed on your system:
 
 ## Additional Configuration
 
-  - **Database Initialization**:
-  - Place your SQL initialization script in the project root as `init.sql`.
-  - This script will automatically execute when the MySQL container starts.
+**Database Initialization**:
+  - The `init.sql` file is included in the repository and will be automatically cloned along with the project.
+  - This script will execute automatically when the MySQL container starts, ensuring the database is populated with initial data.
   
-  - **Customizing Ports**:
+**Customizing Ports**:
   - Update the ports in `docker-compose.yml` if needed:
     ```
       ports:
@@ -181,10 +180,6 @@ By following these steps, you can set up and run the Golf Club Tournament Member
    ```
      GET http://localhost:8080/api/tournaments/getMembersInTournament/1
    ```
-- Get member by email address
-    ```
-      GET /api/members/getMemberByEmailAddress/john@example.com
-    ```
 - Create a new tournament
     ```
       POST http://localhost:8080/api/tournaments
@@ -228,14 +223,3 @@ By following these steps, you can set up and run the Golf Club Tournament Member
         ]
       }
     ```
-  ---
-
-### Testing the API
-
-1. Use Postman to test the endpoints.
-2. For POST requests, ensure the request header includes:
-   ```
-     Content-Type: application/json
-   ```
-   
-
