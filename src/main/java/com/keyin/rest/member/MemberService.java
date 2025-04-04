@@ -25,6 +25,11 @@ public class MemberService {
         return members;
     }
 
+    public Member getMemberById(Long id) {
+        return memberRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Member not found with ID: " + id));
+    }
+
     public Member getMemberByName(String memberName) {
         return memberRepository.findByMemberName(memberName)
                 .orElseThrow(() -> new MemberNotFoundException("Member with name " + memberName + " not found"));

@@ -24,6 +24,11 @@ public class MemberController {
         return memberService.getAllMembers();
     }
 
+    @GetMapping("/{id}")
+    public Member getMemberById(@PathVariable Long id) {
+        return memberService.getMemberById(id);
+    }
+
     @GetMapping("/name/{name}")
     public Member getMemberByName(@PathVariable String name) {
         return memberService.getMemberByName(name);
