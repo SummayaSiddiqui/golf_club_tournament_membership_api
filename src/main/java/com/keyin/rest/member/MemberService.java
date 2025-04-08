@@ -27,7 +27,7 @@ public class MemberService {
 
     public Member getMemberById(Long id) {
         return memberRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Member not found with ID: " + id));
+                .orElseThrow(() -> new MemberNotFoundException("Member not found with ID: " + id));
     }
 
     public Member getMemberByName(String memberName) {
