@@ -12,8 +12,7 @@ CREATE TABLE members (
     member_address VARCHAR(255) NOT NULL,
     member_email VARCHAR(100) UNIQUE NOT NULL,
     member_phone VARCHAR(20) UNIQUE NOT NULL,
-    member_start_date DATE NOT NULL,
-    duration VARCHAR(50) NOT NULL
+    member_start_date DATE NOT NULL
 );
 
 CREATE TABLE tournaments (
@@ -34,17 +33,17 @@ CREATE TABLE tournament_members (
     FOREIGN KEY (member_id) REFERENCES members(id) ON DELETE CASCADE
 );
 
-INSERT INTO members (member_name, member_address, member_email, member_phone, member_start_date, duration) VALUES
-('John Doe', '123 Maple Street, Toronto', 'johndoe1@email.com', '647-555-1234', '2024-01-10', '1 year'),
-('Jane Smith', '456 Oak Avenue, Vancouver', 'janesmith@email.com', '604-555-5678', '2023-12-15', '6 months'),
-('Robert Brown', '789 Pine Road, Calgary', 'robertbrown@email.com', '403-555-9012', '2024-02-20', '1 year'),
-('Emily Davis', '123 Maple Street, Toronto', 'emilydavis@email.com', '647-555-3456', '2024-03-05', '6 months'),
-('Michael Wilson', '456 Oak Avenue, Vancouver', 'michaelwilson@email.com', '604-555-7890', '2024-04-12', '1 year'),
-('Sarah Johnson', '101 Birch Lane, Montreal', 'sarahjohnson@email.com', '514-555-1234', '2023-11-25', '6 months'),
-('David Lee', '789 Pine Road, Calgary', 'davidlee@email.com', '403-555-5678', '2024-05-10', '1 year'),
-('Sophia Martinez', '202 Cedar Street, Ottawa', 'sophiamartinez@email.com', '613-555-2345', '2024-06-08', '6 months'),
-('James White', '101 Birch Lane, Montreal', 'jameswhite@email.com', '514-555-6789', '2023-10-30', '1 year'),
-('Olivia Hall', '202 Cedar Street, Ottawa', 'oliviahall@email.com', '613-555-7891', '2024-07-15', '6 months');
+INSERT INTO members (member_name, member_address, member_email, member_phone, member_start_date) VALUES
+('John Doe', '123 Maple Street, Toronto', 'johndoe1@email.com', '647-555-1234', '2024-01-10'),
+('Jane Smith', '456 Oak Avenue, Vancouver', 'janesmith@email.com', '604-555-5678', '2023-12-15'),
+('Robert Brown', '789 Pine Road, Calgary', 'robertbrown@email.com', '403-555-9012', '2024-02-20'),
+('Emily Davis', '123 Maple Street, Toronto', 'emilydavis@email.com', '647-555-3456', '2024-03-05'),
+('Michael Wilson', '456 Oak Avenue, Vancouver', 'michaelwilson@email.com', '604-555-7890', '2024-04-12'),
+('Sarah Johnson', '101 Birch Lane, Montreal', 'sarahjohnson@email.com', '514-555-1234', '2023-11-25'),
+('David Lee', '789 Pine Road, Calgary', 'davidlee@email.com', '403-555-5678', '2024-05-10'),
+('Sophia Martinez', '202 Cedar Street, Ottawa', 'sophiamartinez@email.com', '613-555-2345', '2024-06-08'),
+('James White', '101 Birch Lane, Montreal', 'jameswhite@email.com', '514-555-6789', '2023-10-30'),
+('Olivia Hall', '202 Cedar Street, Ottawa', 'oliviahall@email.com', '613-555-7891', '2024-07-15');
 
 INSERT INTO tournaments (start_date, end_date, location, entry_fee, cash_prize_amount) VALUES
 ('2024-08-01', '2024-08-05', 'Toronto', 50.00, 1000.00),
@@ -59,4 +58,3 @@ INSERT INTO tournament_members (tournament_id, member_id) VALUES
 (3, 1), (3, 2), (3, 5), (3, 6), (3, 9),  -- Tournament 3 participants
 (4, 3), (4, 4), (4, 7), (4, 8), (4, 10), -- Tournament 4 participants
 (5, 1), (5, 2), (5, 3), (5, 4), (5, 5);  -- Tournament 5 participants
-

@@ -27,7 +27,7 @@ public class Member {
     @Column(name = "member_start_date", nullable = false)
     private LocalDate memberStartDate;
 
-    @Column(name = "duration", nullable = false)
+    @Transient
     private String duration;
 
     public Member() {
