@@ -22,24 +22,24 @@ public class MemberController {
     @GetMapping("/allMembers")
     public List<Member> getAllMembers() {
         List<Member> members = memberService.getAllMembers();
-        // Calculate duration for each member
-        members.forEach(member -> member.setDuration(calculateDuration(member.getMemberStartDate())));
+        // Calculate duration for each member dynamically
+        members.forEach(member -> member.setMemberDuration(calculateDuration(member.getMemberStartDate())));
         return members;
     }
 
     @GetMapping("/{id}")
     public Member getMemberById(@PathVariable Long id) {
         Member member = memberService.getMemberById(id);
-        // Calculate duration for the member
-        member.setDuration(calculateDuration(member.getMemberStartDate()));
+        // Calculate duration for the member dynamically
+        member.setMemberDuration(calculateDuration(member.getMemberStartDate()));
         return member;
     }
 
     @GetMapping("/name/{name}")
     public Member getMemberByName(@PathVariable String name) {
         Member member = memberService.getMemberByName(name);
-        // Calculate duration for the member
-        member.setDuration(calculateDuration(member.getMemberStartDate()));
+        // Calculate duration for the member dynamically
+        member.setMemberDuration(calculateDuration(member.getMemberStartDate()));
         return member;
     }
 
@@ -47,7 +47,7 @@ public class MemberController {
     public List<Member> getMemberByAddress(@PathVariable String address) {
         List<Member> members = memberService.getMemberByAddress(address);
         // Calculate duration for each member
-        members.forEach(member -> member.setDuration(calculateDuration(member.getMemberStartDate())));
+        members.forEach(member -> member.setMemberDuration(calculateDuration(member.getMemberStartDate())));
         return members;
     }
 
@@ -55,7 +55,7 @@ public class MemberController {
     public Member getMemberByPhoneNumber(@PathVariable String phoneNumber) {
         Member member = memberService.getMemberByPhoneNumber(phoneNumber);
         // Calculate duration for the member
-        member.setDuration(calculateDuration(member.getMemberStartDate()));
+        member.setMemberDuration(calculateDuration(member.getMemberStartDate()));
         return member;
     }
 
@@ -63,7 +63,7 @@ public class MemberController {
     public Member getMemberByEmailAddress(@PathVariable String emailAddress) {
         Member member = memberService.getMemberByEmailAddress(emailAddress);
         // Calculate duration for the member
-        member.setDuration(calculateDuration(member.getMemberStartDate()));
+        member.setMemberDuration(calculateDuration(member.getMemberStartDate()));
         return member;
     }
 
@@ -72,14 +72,14 @@ public class MemberController {
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate) {
         List<Member> members = memberService.getMemberByStartDate(startDate);
         // Calculate duration for each member
-        members.forEach(member -> member.setDuration(calculateDuration(member.getMemberStartDate())));
+        members.forEach(member -> member.setMemberDuration(calculateDuration(member.getMemberStartDate())));
         return members;
     }
 
     @PostMapping("")
     public Member createMember(@RequestBody Member member) {
-        // Set duration during the creation of the member
-        member.setDuration(calculateDuration(member.getMemberStartDate()));
+        // Set the duration for the member before saving it
+        member.setMemberDuration(calculateDuration(member.getMemberStartDate()));
         return memberService.createMember(member);
     }
 

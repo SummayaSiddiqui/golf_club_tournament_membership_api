@@ -28,7 +28,7 @@ public class Member {
     private LocalDate memberStartDate;
 
     @Transient
-    private String duration;
+    private String memberDuration;
 
     public Member() {
 
@@ -44,7 +44,14 @@ public class Member {
         this.memberEmailAddress = memberEmailAddress;
         this.memberPhoneNumber = memberPhoneNumber;
         this.memberStartDate = memberStartDate;
-        this.duration = duration;
+    }
+
+    public String getMemberDuration() {
+        return memberDuration;
+    }
+
+    public void setMemberDuration(String memberDuration) {
+        this.memberDuration = memberDuration;
     }
 
     public long getId() {
@@ -71,9 +78,6 @@ public class Member {
         return memberStartDate;
     }
 
-    public String getDuration() {
-        return duration;
-    }
 
     public void setId(long id) {
         this.id = id;
@@ -99,9 +103,6 @@ public class Member {
         this.memberStartDate = memberStartDate;
     }
 
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
 
     @Override
     public String toString() {
@@ -112,7 +113,6 @@ public class Member {
                 ", memberEmailAddress='" + memberEmailAddress + '\'' +
                 ", memberPhoneNumber='" + memberPhoneNumber + '\'' +
                 ", startDate='" + memberStartDate + '\'' +
-                ", duration='" + duration + '\'' +
                 '}';
     }
 }

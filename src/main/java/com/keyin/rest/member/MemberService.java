@@ -26,7 +26,7 @@ public class MemberService {
         // Calculate duration for each member
         for (Member member : members) {
             String duration = calculateDuration(member.getMemberStartDate());
-            member.setDuration(duration);
+            member.setMemberDuration(duration);
         }
         return members;
     }
@@ -72,7 +72,7 @@ public class MemberService {
         String duration = calculateDuration(newMember.getMemberStartDate());
 
         // Set the calculated duration to the new member
-        newMember.setDuration(duration);
+        newMember.setMemberDuration(duration);
 
         // Save the member with the calculated duration
         return memberRepository.save(newMember);
