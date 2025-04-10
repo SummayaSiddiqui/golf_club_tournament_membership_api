@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
-
 @Entity
 @Table(name = "members")
 public class Member {
@@ -27,31 +26,19 @@ public class Member {
     @Column(name = "member_start_date", nullable = false)
     private LocalDate memberStartDate;
 
-    @Transient
-    private String memberDuration;
-
     public Member() {
-
     }
 
     public Member(long id) {
         this.id = id;
     }
 
-    public Member(String memberName, String memberAddress, String memberEmailAddress, String memberPhoneNumber, LocalDate memberStartDate, String duration) {
+    public Member(String memberName, String memberAddress, String memberEmailAddress, String memberPhoneNumber, LocalDate memberStartDate) {
         this.memberName = memberName;
         this.memberAddress = memberAddress;
         this.memberEmailAddress = memberEmailAddress;
         this.memberPhoneNumber = memberPhoneNumber;
         this.memberStartDate = memberStartDate;
-    }
-
-    public String getMemberDuration() {
-        return memberDuration;
-    }
-
-    public void setMemberDuration(String memberDuration) {
-        this.memberDuration = memberDuration;
     }
 
     public long getId() {
@@ -78,7 +65,6 @@ public class Member {
         return memberStartDate;
     }
 
-
     public void setId(long id) {
         this.id = id;
     }
@@ -103,7 +89,6 @@ public class Member {
         this.memberStartDate = memberStartDate;
     }
 
-
     @Override
     public String toString() {
         return "Member{" +
@@ -116,4 +101,3 @@ public class Member {
                 '}';
     }
 }
-
