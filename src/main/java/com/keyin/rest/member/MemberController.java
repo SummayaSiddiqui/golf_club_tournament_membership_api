@@ -31,7 +31,7 @@ public class MemberController {
 
     @GetMapping("/name/{name}")
     public List<Member> getMemberByName(@PathVariable String name) {
-        return memberService.getMemberByAddress(name);
+        return memberService.getMemberByName(name);
     }
 
     @GetMapping("/getMemberByAddress/{address}")

@@ -31,9 +31,9 @@ public class MemberService {
     }
 
     public List<Member> getMemberByName(String memberName) {
-        List<Member> members = memberRepository.findByMemberAddress(memberName);
+        List<Member> members = memberRepository.findByMemberName(memberName);
         if (members.isEmpty()) {
-            throw new MemberNotFoundException("No members found with address: " + memberName);
+            throw new MemberNotFoundException("No members found with name: " + memberName);
         }
         return members;
     }
